@@ -1,0 +1,51 @@
+.container{
+    width: 740px;
+    height: 480px;
+    z-index: 9999;
+    top: 25%;
+    left: 25%;
+    bottom: 50%;
+    background-color: #fff;
+    position: absolute;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 32px;
+    font-family: "Avenir";
+    color: #021842;
+    display: flex;
+    flex-direction: column;
+    border-radius: 5px;
+}
+.container span{
+    font-weight: 400;
+    margin-top: 30px;
+    align-self: center;
+}
+
+.container__wrapper{
+    display: flex;
+    gap: 200px;
+    margin-top: 30px;
+   justify-content: center;
+}
+
+.container__fields{
+    display: flex;
+    flex-direction: column;
+    
+}
+.container__fields label{
+    font-size: 12px;
+}
+.container__fields input{
+    outline: none;
+    width: 200px;
+    height: 20px;
+    border: 1px solid grey;
+    border-radius: 5px;
+}
+.container__fields__footer{
+    align-self: center;
+    margin-top: 100px;
+}

@@ -1,0 +1,81 @@
+{
+  "customers": [
+    {
+      "id": 1,
+      "first_name": "Sebastian123",
+      "last_name": "Eschweiler",
+      "phone": "01928394945",
+      "email": "sebastian@codingthesmartway.com"
+    },
+    {
+      "id": 2,
+      "first_name": "Steve",
+      "last_name": "Palmer",
+      "phone": "019282324945",
+      "email": "steve@codingthesmartway.com"
+    },
+    {
+      "id": 3,
+      "first_name": "Ann okonta",
+      "last_name": "Smith",
+      "phone": "018998394945",
+      "email": "ann@codingthesmartway.com"
+    },
+    {
+      "email": "okontaa@gmail.com",
+      "first_name": "Anthony",
+      "last_name": "Okonta",
+      "phone": "1234567",
+      "id": 4
+    },
+    {
+      "email": "ok@test.com",
+      "first_name": "James",
+      "last_name": "o",
+      "phone": "12344333",
+      "id": 5
+    },
+    {
+      "email": "ok@yd.com",
+      "first_name": "prince",
+      "last_name": "james",
+      "phone": "23434545545",
+      "id": 6
+    },
+    {
+      "email": "test@test.com",
+      "first_name": "asdas",
+      "last_name": "asdasd",
+      "phone": "23893428943",
+      "id": 7
+    },
+    {
+      "email": "james@yahoo.com",
+      "first_name": "James",
+      "last_name": "Welsh",
+      "phone": "99834983489",
+      "id": 8
+    },
+    {
+      "email": "test12345@yahoo.com",
+      "first_name": "sdfsdfs",
+      "last_name": "sdfsdfsd",
+      "phone": "20389238943",
+      "id": 9
+    },
+    {
+      "email": "customer@yahoo.com",
+      "first_name": "Customer",
+      "last_name": "Customer",
+      "phone": "12232309232",
+      "id": 10
+    },
+    {
+      "email": "thus@yahoo.com",
+      "first_name": "Thus",
+      "last_name": "asdasd",
+      "phone": "9238239823",
+      "id": 11
+    }
+  ]
+}
