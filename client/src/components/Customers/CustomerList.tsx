@@ -1,4 +1,4 @@
-import { ChangeEvent, FormEvent, useEffect, useState } from "react";
+import {  FormEvent, useCallback, useEffect, useState } from "react";
 import useFetch from "../hooks/useFetch/useFetch";
 import customerListStyles from "./Customer.module.css";
 import Button from "../../shared/Button";
@@ -7,14 +7,12 @@ import Modal from "../../shared/Modal/Modal";
 import EditCustomer from "./EditCustomer/EditCustomer";
 import NewCustomer from "./NewCustomer/NewCustomer";
 import { toast } from "react-toastify";
-import Pagination from "../../shared/Pagination";
 
 const CustomerList = () => {
   document.title = "Customer List";
   const [customerData, setCustomerData] = useState<CustomerProps | null>();
   const [isAdd, setIsAdd] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
-  const [pageNumbers, setPageNumbers] = useState<number[]>([]);
   const [customerList, setCustomerList] = useState<CustomerProps[]>();
   const [searchParameter,setSearchParameter]=useState('')
   const {
@@ -29,34 +27,23 @@ const CustomerList = () => {
   } = useFetch({
     urlPath: "customers",
   });
-  const dataPerPage = Math.ceil(data?.length!! / 10);
-  let pageNumbersArr: number[] = [];
 
-
-  useEffect(() => {
-    fetchData();
-    showCustomersOnLoad();
-    loadPageNumbers();
-  }, [statusCode, fetchData]);
-
-  const showCustomersOnLoad = () => {
+  const showCustomersOnLoad = useCallback(() => {
     if (!isLoading && !error && data?.length!! > 0) {
       const customerList = [...data!!];
       const showList = customerList.slice(0, 10 * currentPage);
       setCustomerList(showList);
     }
-  };
+  },[data]);
+  useEffect(() => {
+    fetchData();
+   
+    showCustomersOnLoad();
+  }, [statusCode, fetchData,currentPage]);
 
-  const loadPageNumbers = () => {
-    if (pageNumbersArr.length < 1) {
-      let i = 0;
-      while (i < dataPerPage) {
-        i++;
-        pageNumbersArr.push(i);
-      }
-      setPageNumbers(pageNumbersArr);
-    }
-  };
+  
+
+  
 
   const onEdit = (customer: CustomerProps) => {
     setCustomerData(customer);
@@ -217,13 +204,7 @@ const CustomerList = () => {
         )}
       </div>
 
-      <Pagination
-        arr={pageNumbers}
-        totalCount={data?.length!!}
-        currentArr={data!!}
-        currentPage={currentPage}
-        onClick={onPageClick}
-      />
+    
     </>
   );
 };

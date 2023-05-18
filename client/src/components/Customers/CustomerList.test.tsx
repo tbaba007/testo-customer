@@ -1,4 +1,3 @@
-import { act,renderHook } from "@testing-library/react-hooks"
 import {render,screen} from '@testing-library/react'
 import useFetch from "../hooks/useFetch/useFetch"
 import App from "../../App";
