@@ -1,9 +1,9 @@
-import {  FormEvent, useCallback, useEffect, useState } from "react";
+import {  FormEvent, useEffect, useState } from "react";
 import useFetch from "../hooks/useFetch/useFetch";
 import customerListStyles from "./Customer.module.css";
-import Button from "../../shared/Button";
+import Button from "../../ui/Button";
 import { CustomerProps } from "./types";
-import Modal from "../../shared/Modal/Modal";
+import Modal from "../../ui/Modal/Modal";
 import EditCustomer from "./EditCustomer/EditCustomer";
 import NewCustomer from "./NewCustomer/NewCustomer";
 import { toast } from "react-toastify";
@@ -12,7 +12,6 @@ const CustomerList = () => {
   document.title = "Customer List";
   const [customerData, setCustomerData] = useState<CustomerProps | null>();
   const [isAdd, setIsAdd] = useState(false);
-  const [currentPage, setCurrentPage] = useState(1);
   const [customerList, setCustomerList] = useState<CustomerProps[]>();
   const [searchParameter,setSearchParameter]=useState('')
   const {
@@ -28,22 +27,12 @@ const CustomerList = () => {
     urlPath: "customers",
   });
 
-  const showCustomersOnLoad = useCallback(() => {
-    if (!isLoading && !error && data?.length!! > 0) {
-      const customerList = [...data!!];
-      const showList = customerList.slice(0, 10 * currentPage);
-      setCustomerList(showList);
-    }
-  },[data]);
+  
   useEffect(() => {
     fetchData();
-   
-    showCustomersOnLoad();
-  }, [statusCode, fetchData,currentPage]);
+  }, [statusCode, fetchData]);
 
-  
 
-  
 
   const onEdit = (customer: CustomerProps) => {
     setCustomerData(customer);
@@ -87,16 +76,7 @@ const CustomerList = () => {
     setIsAdd(false);
   };
 
-  const onPageClick = (pageNumber: number) => {
-    setCurrentPage(pageNumber);
-    setCustomerList([]);
-    const customerList = [...data!!];
-    const customersToShow = customerList.slice(
-      pageNumber * 10 - 10,
-      10 * pageNumber
-    );
-    setCustomerList(customersToShow);
-  };
+
 
   const onSearch = (event?:FormEvent) => {
     event?.preventDefault()
@@ -154,8 +134,7 @@ const CustomerList = () => {
           <tbody>
             {!isLoading &&
               !error &&
-              data &&
-              customerList
+              data
                 ?.sort(function (a: CustomerProps, b: CustomerProps) {
                   return b.id!! - a.id!!;
                 })

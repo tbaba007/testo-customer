@@ -1,7 +1,7 @@
 import { ChangeEvent, FormEvent, useState } from "react";
 import { CustomerProps } from "../types";
 import editCustomerstyles from "./EditCustomer.module.css";
-import Button from "../../../shared/Button/Button";
+import Button from "../../../ui/Button/Button";
 import { validateEmail, validatePhone } from "../../../helper/Common";
 import { toast } from "react-toastify";
 

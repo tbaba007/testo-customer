@@ -1,6 +1,6 @@
 import { toast } from "react-toastify";
 import { validateEmail, validatePhone } from "../../../helper/Common";
-import Button from "../../../shared/Button";
+import Button from "../../../ui/Button";
 import { CustomerProps } from "../types";
 import addCustomerStyles from "./NewCustomer.module.css";
 import { ChangeEvent, FormEvent, useState } from "react";
